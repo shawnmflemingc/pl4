@@ -27,7 +27,15 @@ https://developers.arcgis.com/documentation/mapping-apis-and-services/get-starte
     <script src="https://js.arcgis.com/4.22/"></script>
 
     <script>
-      require(["esri/config","esri/Map", "esri/views/MapView"], function (esriConfig,Map, MapView) {
+      require([
+        "esri/config",
+        "esri/Map", 
+        "esri/views/MapView", 
+        "esri/widgets/Locate"
+              ], function (esriConfig,
+                           Map, 
+                           MapView,
+                           Locate) {
 
         esriConfig.apiKey = "AAPKf2268342518c436db1e03d37a40ec782DnqVXCg5TwBDH2ZKp6VlCsmwTvKJZAhVkY0FQCi_syu_KDlDlzuzoBsQXKbVTCz0";
 
@@ -44,7 +52,15 @@ https://developers.arcgis.com/documentation/mapping-apis-and-services/get-starte
           center: [-40,28],
           zoom: 2 
         });
-
+        const locate = new Locate({
+          view: view,
+          useHeadingEnabled: false,
+          goToOverride: function(view, options) {
+            options.target.scale = 1500;
+            return view.goTo(options.target);
+          }
+        });
+        view.ui.add(locate, "top-left");
       });
     </script>
 
