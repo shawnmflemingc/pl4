@@ -32,14 +32,17 @@ https://developers.arcgis.com/documentation/mapping-apis-and-services/get-starte
         esriConfig.apiKey = "AAPKf2268342518c436db1e03d37a40ec782DnqVXCg5TwBDH2ZKp6VlCsmwTvKJZAhVkY0FQCi_syu_KDlDlzuzoBsQXKbVTCz0";
 
         const map = new Map({
-          basemap: "arcgis-topographic" // Basemap layer service
+          basemap: "arcgis-navigation" // Basemap layer service
         });
 
         const view = new MapView({
           map: map,
           center: [-118.805, 34.027], // Longitude, latitude
           zoom: 13, // Zoom level
-          container: "viewDiv" // Div element
+          container: "viewDiv", // Div element
+          map: map,
+          center: [-40,28],
+          zoom: 2 
         });
 
       });
